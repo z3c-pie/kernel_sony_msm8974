@@ -601,6 +601,9 @@ static long msm_private_ioctl(struct file *file, void *fh,
 	event_data = (struct msm_v4l2_event_data *)
 		((struct v4l2_event *)arg)->u.data;
 
+	if (!event_data)
+		return -EINVAL;
+
 	session_id = event_data->session_id;
 	stream_id = event_data->stream_id;
 
